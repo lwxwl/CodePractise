@@ -15,7 +15,11 @@ SOURCES += main.cpp \
     test5.cpp \
     test8.cpp \
     test12.cpp \
-    test11.cpp
+    test11.cpp \
+    homework1.cpp \
+    homework2.cpp \
+    homework3.cpp \
+    homework4.cpp
 
 HEADERS += \
     test1.h \
@@ -23,4 +27,8 @@ HEADERS += \
     test5.h \
     test8.h \
     test12.h \
-    test11.h
+    test11.h \
+    homework1.h \
+    homework2.h \
+    homework3.h \
+    homework4.h
