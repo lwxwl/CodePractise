@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     homework1.cpp \
     homework2.cpp \
     homework3.cpp \
-    homework4.cpp
+    homework4.cpp \
+    exercise_4_1.cpp
 
 HEADERS += \
     test1.h \
@@ -31,4 +32,5 @@ HEADERS += \
     homework1.h \
     homework2.h \
     homework3.h \
-    homework4.h
+    homework4.h \
+    exercise_4_1.h
