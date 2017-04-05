@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidTest</string>
+    <string name="button_1">Button 1</string>
+    <string name="label">This is FirstActivity</string>
+    <string name="item_1">Add</string>
+    <string name="item_2">Remove</string>
+</resources>
