@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".FirstActivity"
-            android:label="@string/label">
+            android:label="@string/label"
+            android:launchMode="singleTop">
 
             <!-- 配置主活动 -->
             <intent-filter>

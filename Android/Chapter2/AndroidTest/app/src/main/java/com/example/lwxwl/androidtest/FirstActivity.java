@@ -2,7 +2,6 @@ package com.example.lwxwl.androidtest;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,22 +9,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("FirstActivity", this.toString());
         setContentView(R.layout.first_layout);
         Button button1 = (Button) findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //Toast.makeText(FirstActivity.this, "You clicked Button 1", Toast.LENGTH_SHORT).show();
+                SecondActivity.actionStart(FirstActivity.this, "data1", "data2");
+                // Toast.makeText(FirstActivity.this, "You clicked Button 1", Toast.LENGTH_SHORT).show();
                 // finish();  销毁活动
 
                 // 显式Intent
-                //Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-                //startActivity(intent);
+                // Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                // startActivity(intent);
 
                 // 隐式Intent
                 // Intent intent = new Intent("com.example.lwxwl.androidtest.ACTION_START");
@@ -49,9 +50,10 @@ public class FirstActivity extends AppCompatActivity {
                 // startActivity(intent);
 
                 // 获取SecondActivity返回的数据
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-                startActivityForResult(intent, 1);
+                // Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                // startActivityForResult(intent, 1);
 
+                // 活动的启动模式standard, singleTop, singleTask, singleInstance
             }
         });
     }
