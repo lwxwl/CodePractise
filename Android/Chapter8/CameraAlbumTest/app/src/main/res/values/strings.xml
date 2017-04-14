@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CameraAlbumTest</string>
-    <string name="button_name">Take Photo</string>
+    <string name="button1_name">Take Photo</string>
+    <string name="button2_name">Choose From Album</string>
 </resources>
