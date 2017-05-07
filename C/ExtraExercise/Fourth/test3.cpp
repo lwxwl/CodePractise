@@ -19,11 +19,13 @@ void SelSort(int a[N])
 void main()
 {
     int a[N],i;
-    for(i = 0;i < N;i++)
-        scanf("%d",a + i);
+    for(i = 0;i < N;i++) {
+        scanf("%d", a + i);
+    }
     SelSort(a);
-    for (i = 0;i < N;i++)
-        printf("%6d",a[i]);
+    for (i = 0;i < N;i++) {
+        printf("%6d", a[i]);
+    }
 }
 
 /* 改进选择排序
@@ -32,9 +34,11 @@ void SelSort(int a[N])
     int i,j,min,t;
     for (i = 0; i < N-1; i++) {
         min = i;
-        for (j = i + 1; j < N; j++)
-            if(a[j] < a[min])
+        for (j = i + 1; j < N; j++) {
+            if(a[j] < a[min]) {
                 min = j;
+            }
+        }
         if(min != i) {
             t = a[i];
             a[i] = a[min];
