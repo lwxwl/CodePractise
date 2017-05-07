@@ -5,7 +5,6 @@
 
 int main()
 {
-
     int n, sum1, sum2;
     int a[n];
     printf("Please input N: ");

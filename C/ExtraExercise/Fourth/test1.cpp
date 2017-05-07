@@ -1,24 +1,22 @@
 // 将两个字符串连接起来(不用strcat)。
 #include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
 
-int main() {
-    char str1[80], str2[40];
-    int i = 0, j = 0;
-    printf("Please input string1: ");
-    scanf("%s", str1);
-    printf("Please input string2: ");
-    scanf("%s", str2);
+int main()
+{
+    int i, j;
+    char a[40], b[40], c[80];
+    printf("Please input string1: \n");
+    gets(a);
+    printf("Please input string2: \n");
+    gets(b);
 
-    while (str1[i] != '\0') {
-        i++;
+    for (i = 0; a[i] != '\0'; i++) {
+        c[i] = a[i];
     }
-    while (str2[j] != '\0') {
-        str1[i++] = str2[j++];
-        str1[i] = '\0';
+    for (j = 0; b[i] != '\0'; j++) {
+        c[i + j] = b[j];
     }
-
-    printf("The string is: %s", str1);
-    getch();
+    c[i + j] = '\0';
+    puts(c);
+    return 0;
 }
