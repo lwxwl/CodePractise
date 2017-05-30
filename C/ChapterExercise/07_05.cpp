@@ -7,7 +7,7 @@ int main() {
 
     for (int i = 0; i < NUM_std; i++) {
         for (int j = 0; j < NUM_course; j++) {
-            printf("input the mark of %th course of %dth student: ", j + 1, i + 1);
+            printf("input the mark of %dth course of %dth student: ", j + 1, i + 1);
             scanf("%f", &score[i][j]);
         }
 
@@ -21,7 +21,7 @@ int main() {
         for (int j = 0; j < NUM_course; j++) {
             score[NUM_std][j] /= NUM_std;
         }
-        printf("NO.      C1      C2      C3      C4      AVER\n");
+        printf("NO.        C1      C2      C3      C4     AVER\n");
         for (int i = 0; i < NUM_std; i++) {
             printf("STU%d\t", i +1);
             for (int j = 0; j < NUM_course + 1; j++) {
@@ -29,6 +29,11 @@ int main() {
             }
             printf("\n");
         }
+        printf("----------------------------------------------");
+        printf("\nAVER_C");
+        for (int j = 0; j < NUM_course; j++) {
+            printf("%6.1f\t", score[NUM_std][j]);
+        }
+        printf("\n");
     }
-
 }
