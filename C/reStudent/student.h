@@ -13,6 +13,13 @@ enum SEX{
     male, female
 };
 
+struct Level{
+    int Excellent;
+    int Fine;
+    int Medium;
+    int Pass;
+    int Failed;
+};
 struct Student_Info{
     char no[9];
     char name[20];
@@ -21,7 +28,6 @@ struct Student_Info{
     int classno;
     float Math, C_Language, English;
     float sum, ave;
-    float score[3];
 };
 typedef struct Student_Info STUDENT;
 
@@ -86,7 +92,7 @@ void readDate(STUDENT *student, int *num) {
     scanf("%d", num);
 
     for (int i = 0; i < *num; i++) {
-        printf("\n==请输入第%d位学生的学号== \n", i);
+        printf("\n==请输入第%d位学生的学号== \n", i + 1);
         scanf("%s", student[i].no);
         fflush(stdin);
         printf("\n==请输入学号为%s的学生信息== \n", student[i].no);
@@ -136,7 +142,7 @@ void ComputeScoreBySubject(STUDENT *student, int *num) {
     printf("数学的总分是: %-8.2f;  平均分是: %-8.2f\n", 1.0 * sum1, 1.0 * sum1 / (*num));
     printf("英语的总分是: %-8.2f;  平均分是: %-8.2f\n", 1.0 * sum2, 1.0 * sum2 / (*num));
     printf("C语言的总分是: %-8.2f; 平均分是: %-8.2f\n", 1.0 * sum3, 1.0 * sum3 / (*num));
-    printf("三门课程中平均分最高为: %-8.2f 最低为: %-8.2f ", 1.0 * max / (*num), 1.0 * min / (*num));
+    printf("三门课程中平均分最高为: %-8.2f 最低为: %-8.2f\n", 1.0 * max / (*num), 1.0 * min / (*num));
     returnUserFace();
 }
 
@@ -156,38 +162,71 @@ void ComputeScoreByStudent(STUDENT *student, int *num) {
             min = student[n].sum;
         }
     }
-    printf("总分最高为: %-8.2f 最低为: %-8.2f", max, min);
+    printf("总分最高为: %-8.2f 最低为: %-8.2f\n", max, min);
     return UserInterface();
 }
-
+// 存疑
 void SortScore(STUDENT *student, int *num) {
-    int score[3];
-    int Excellent[3] = {0}, Fine[3] = {0}, Medium[3] = {0}, Pass[3] = {0}, Failed[3] = {0};
+    struct Level subject[3] = {0};
     for (int i = 0; i < *num; i++) {
-        score[0] = student[i].Math;
-        score[1] = student[i].English;
-        score[2] = student[i].C_Language;
-        printf("科目%d: ", i + 1);
-        for (int j = 0; j < 3; j++) {
-            if (student[i].score[j] >= 90) {
-                Excellent[j]++;
-            } else if (student[i].score[j] >= 80) {
-                Fine[j]++;
-            } else if (student[i].score[j] >= 70) {
-                Medium[j]++;
-            } else if (student[i].score[j] >= 60) {
-                Pass[j]++;
-            } else {
-                Failed[j]++;
-            }
-            printf("优秀(90-100) %2d %-5.2f%%\n", Excellent[j], 1.0 * Excellent[j] / (*num) * 100);
-            printf("良好(80-89)  %2d %-5.2f%%\n", Fine[j], 1.0 * Fine[j] / (*num) * 100);
-            printf("中等(70-79)  %2d %-5.2f%%\n", Medium[j], 1.0 * Medium[j] / (*num) * 100);
-            printf("及格(60-69)  %2d %-5.2f%%\n", Pass[j], 1.0 * Pass[j] / (*num) * 100);
-            printf("不及格(0-59) %2d %-5.2f%%\n", Failed[j], 1.0 * Failed[j] / (*num) * 100);
+        if (student[i].Math >= 90 && student[i].Math <= 100) {
+            subject[0].Excellent++;
+        } else if (student[i].Math >= 80 && student[i].Math < 90) {
+            subject[0].Fine++;
+        } else if (student[i].Math >= 70 && student[i].Math < 80) {
+            subject[0].Medium++;
+        } else if (student[i].Math >= 60 && student[i].Math < 70) {
+            subject[0].Pass++;
+        } else {
+            subject[0].Failed++;
         }
-        returnUserFace();
+
+        if (student[i].English >= 90 && student[i].English <= 100) {
+            subject[1].Excellent++;
+        } else if (student[i].English >= 80 && student[i].English < 90) {
+            subject[1].Fine++;
+        } else if (student[i].English >= 70 && student[i].English < 80) {
+            subject[1].Medium++;
+        } else if (student[i].English >= 60 && student[i].English < 70) {
+            subject[1].Pass++;
+        } else {
+            subject[1].Failed;
+        }
+
+        if (student[i].C_Language >= 90 && student[i].C_Language <= 100) {
+            subject[2].Excellent++;
+        } else if (student[i].C_Language >= 80 && student[i].C_Language < 90) {
+            subject[2].Fine++;
+        } else if (student[i].C_Language >= 70 && student[i].C_Language < 80) {
+            subject[2].Medium++;
+        } else if (student[i].C_Language >= 60 && student[i].C_Language < 70) {
+            subject[2].Pass++;
+        } else {
+            subject[2].Failed;
+        }
     }
+
+    for (int i = 0; i < 3; i++) {
+        switch (i) {
+            case 0:
+                printf("数学: \n");
+                break;
+            case 1:
+                printf("英语: \n");
+                break;
+            case 2:
+                printf("C语言: \n");
+                break;
+            default:
+                break;
+        }
+        printf("优秀(90-100) %2d %-5.2f%%\n", subject[i].Excellent, 1.0 * subject[i].Excellent / (*num) * 100);
+        printf("良好(80-89)  %2d %-5.2f%%\n", subject[i].Fine, 1.0 * subject[i].Fine / (*num) * 100);
+        printf("中等(70-79)  %2d %-5.2f%%\n", subject[i].Medium, 1.0 * subject[i].Medium / (*num) * 100);
+        printf("及格(60-69)  %2d %-5.2f%%\n", subject[i].Pass, 1.0 * subject[i].Pass / (*num) * 100);
+        printf("不及格(0-59) %2d %-5.2f%%\n", subject[i].Failed, 1.0 * subject[i].Failed / (*num) * 100);
+    }
+    returnUserFace();
 }
 
 int orderDecrease(const void *a, const void *b) {
