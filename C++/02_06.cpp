@@ -1,16 +1,15 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
 int main()
 {
-    const int hen = 33, chick = 100;
-    for (int i = 0; i <= hen; i++) {
-        for (int j = 0; j <= chick; j++) {
-            if ((5 * (100 - i - j) + 3 * i + j / 3) == 100 && j / 3 == 0 && i + j <= 100) {
-                cout << 100 - i - j << "\t" << i << "\t" << j << endl;
-            }
-        }
+    for (int x = 0; x <= 100/5; x++)
+    {
+        double y = (200 - 14 * x) / 8.0;
+        double z = 100 - y - x;
+        if (y == int(y) && y >= 0 && z >= 0)
+            cout << x << " " << y << " " << z << endl;
     }
+    
     return 0;
 }
-
