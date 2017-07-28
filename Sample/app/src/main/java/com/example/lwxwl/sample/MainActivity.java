@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    // action bar上菜单的点击事件
+    // 设置action bar上菜单的点击事件
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
